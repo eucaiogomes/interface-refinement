@@ -1,11 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { ChevronLeft, Check, Download } from "lucide-react";
+import { Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSurveyState } from "@/lib/survey-state";
 import { QUESTIONS, SCALES } from "@/lib/copsoq-questions";
 
 export default function Obrigado() {
-  const navigate = useNavigate();
   const { answers } = useSurveyState(QUESTIONS.length);
 
   const handleDownload = () => {
@@ -35,18 +33,7 @@ export default function Obrigado() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-y-auto">
-      {/* Top bar */}
-      <div className="w-full px-6 py-6 md:px-12 md:py-8">
-        <button
-          onClick={() => navigate("/")}
-          aria-label="Voltar à vitrine"
-          className="w-10 h-10 rounded-full bg-card border border-accent/40 flex items-center justify-center text-accent hover:bg-accent/10 hover:scale-105 active:scale-95 transition-spring shadow-soft"
-        >
-          <ChevronLeft className="w-5 h-5" strokeWidth={2.5} />
-        </button>
-      </div>
-
-      <main className="w-full max-w-[1100px] mx-auto px-6 md:px-12 pb-20 mt-4 md:mt-8">
+      <main className="w-full max-w-[1100px] mx-auto px-6 md:px-12 pb-20 mt-12 md:mt-16">
         <div className="flex flex-col items-start w-full animate-slide-up">
           {/* Success badge */}
           <div className="w-20 h-20 rounded-full bg-accent/15 flex items-center justify-center mb-8 animate-scale-in">
@@ -64,13 +51,6 @@ export default function Obrigado() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
-              <Button
-                onClick={() => navigate("/")}
-                size="lg"
-                className="h-12 bg-accent hover:bg-accent/90 text-accent-foreground rounded-full px-7 font-semibold shadow-accent"
-              >
-                Voltar ao início
-              </Button>
               <Button
                 onClick={handleDownload}
                 size="lg"
